@@ -19,9 +19,13 @@ module.exports = {
 
   getAll: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
+    console.log('outside')
 
     dbInstance.read_products()
-      .then( products => res.status(200).send( products ) )
+      .then( products => {
+        //   console.log('works')
+          res.status(200).send( products )
+        } )
       .catch( () => res.status(500).send() );
   },
 
